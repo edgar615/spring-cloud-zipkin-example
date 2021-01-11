@@ -1,0 +1,60 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: student-service
+  kafka:
+    bootstrap-servers: 192.168.159.131:9092
+    consumer:
+      group-id: test
+      max-poll-records: 5
+  redis:
+    database: 0
+    host: 192.168.159.131
+    port: 6379
+    ssl : false
+    timeout: 3000
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.159.131:3306/ds0?zipkinServiceName=mysqlService
+    username: root
+    password: 123456
+    connectionTimeout: 60000 #连接的超时时间，毫秒
+    dataSourceProperties: # hikari的属性
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      useLocalSessionState: true
+      useLocalTransactionState: true
+      rewriteBatchedStatements: true
+      cacheResultSetMetadata: true
+      cacheServerConfiguration: true
+      elideSetAutoCommits: true
+      maintainTimeStats: false
+  zipkin:
+    baseUrl: http://192.168.159.131:9411
+  cloud:
+    consul:
+      host: 192.168.159.131
+      port: 8500
+      discovery:
+        healthCheckPath: /actuator/health
+#        healthCheckPath: ${management.contextPath}/health
+        healthCheckInterval: 15s
+        preferIpAddress: true
+decorator:
+  datasource:
+    sleuth:
+      enabled: true
+      include: query
+
+management:
+  info:
+    defaults:
+      enabled: true
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+

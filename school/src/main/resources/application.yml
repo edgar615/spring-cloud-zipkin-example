@@ -1,0 +1,24 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: school-service
+  zipkin:
+    baseUrl: http://192.168.159.131:9411
+
+  cloud:
+    consul:
+      host: 192.168.159.131
+      port: 8500
+      discovery:
+        healthCheckPath: /actuator/health
+        preferIpAddress: true
+
+management:
+  info:
+    defaults:
+      enabled: true
+  endpoint:
+    health:
+      show-details: "ALWAYS"

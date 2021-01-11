@@ -1,0 +1,24 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: student-service
+  cloud:
+    consul:
+      host: 192.168.1.221
+      port: 8500
+      discovery:
+        enabled: true
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 15s
+        preferIpAddress: true
+
+management:
+  info:
+    defaults:
+      enabled: true
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+

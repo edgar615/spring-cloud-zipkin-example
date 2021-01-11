@@ -1,0 +1,44 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.edgar615.grpc";
+
+package com.github.edgar615.grpc;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+/*
+这是一段注释
+这是一段注释
+*/
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+message User {
+  uint64 id = 1;
+  string username = 2;
+  string mobile = 3;
+  string mail = 4;
+  uint32 age = 5;
+}
+
+message SomeMsg {
+  int32 a = 1;
+}
+
+message Person {
+  int32 id = 1;//24
+  string name = 2;//edgar
+  string email = 3;//edgar@github.com
+}
