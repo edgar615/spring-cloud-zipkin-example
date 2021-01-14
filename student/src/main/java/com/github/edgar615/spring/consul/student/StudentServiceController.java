@@ -77,7 +77,7 @@ public class StudentServiceController {
     CurrentSpanCustomizer spanCustomizer = CurrentSpanCustomizer.create(tracing);
     tracing.currentTraceContext().get().traceId();
 //    template.send("myTopic", "message1");
-    grpc();
+//    grpc();
     List<Student> studentList = schooDB.get(schoolname);
       if (studentList == null) {
         studentList = new ArrayList<Student>();

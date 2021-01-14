@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+spring:
+  application:
+    name: spring-cloud-gateway
+  zipkin:
+    baseUrl: http://192.168.159.131:9411
+  cloud:
+    consul:
+      host: 192.168.159.131
+      port: 8500
+      discovery:
+        healthCheckPath: /actuator/health
+        preferIpAddress: true
+#    discovery:
+#      reactive:
+#        enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: body_read
+          uri: lb://school-service
+          predicates:
+            - After=2020-04-20T00:00:00+08:00[Asia/Shanghai]

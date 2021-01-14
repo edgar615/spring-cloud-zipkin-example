@@ -18,7 +18,8 @@
 	<modules>
         <module>school</module>
 		<module>student</module>
-	</modules>
+        <module>gateway</module>
+    </modules>
 
     <properties>
         <argLine>-Dfile.encoding=UTF-8</argLine>
